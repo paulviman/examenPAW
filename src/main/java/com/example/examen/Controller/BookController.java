@@ -23,7 +23,7 @@ public class BookController {
     public List<Book> searchBooks(@RequestParam("q") String keyword) {
         System.out.println(keyword);
         System.out.println(bookRepository.findByKeyword(keyword).toString());
-        if (bookRepository.findByKeyword(keyword).isEmpty()) {
+        if (bookRepository.findByKeywordIgnoreCase(keyword).isEmpty()) {
             devWord.add(keyword);
             System.out.println("Afisez lista:");
             System.out.println(devWord);
