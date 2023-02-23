@@ -57,6 +57,13 @@ class BookSearch extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+componentDidMount() {
+    fetch(`http://localhost:8080/books-all`)
+        .then(response => response.json())
+        .then(books => {
+            this.setState({ books });
+        });
+}
 
     handleChange(event) {
         this.setState({ keyword: event.target.value });

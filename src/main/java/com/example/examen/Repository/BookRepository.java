@@ -10,4 +10,7 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Long> {
     @Query("SELECT b FROM Book b WHERE b.title LIKE %:keyword% OR b.author LIKE %:keyword%")
     List<Book> findByKeyword(@Param("keyword") String keyword);
+
+    @Query("SELECT b FROM Book b WHERE LOWER(b.title) LIKE %:keyword% OR LOWER(b.author) LIKE %:keyword%")
+    List<Book> findByKeywordIgnoreCase(String keyword);
 }
